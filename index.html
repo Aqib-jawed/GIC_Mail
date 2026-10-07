@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GITAM Innovation Challenge 2026 – 20-Day Email Series</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#14113a;--bg2:#241d63;--ink:#f6f3ff;--mut:#b9b3e6;--gold:#ffc93c;--mint:#5ee6c3;--card:#fffdf7;--cardink:#1d1a3d;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 'DM Sans',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+.stage{position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 0,var(--bg2),var(--bg) 70%)}
+.beam{position:absolute;top:-10%;width:34vw;height:120vh;background:linear-gradient(180deg,rgba(255,201,60,.28),transparent 80%);clip-path:polygon(45% 0,55% 0,100% 100%,0 100%);transform-origin:50% 0;animation:sway 9s ease-in-out infinite alternate}
+.beam.a{left:8%;--r:-14deg}.beam.b{right:8%;--r:14deg;animation-delay:-4s;background:linear-gradient(180deg,rgba(94,230,195,.22),transparent 80%)}
+@keyframes sway{from{transform:rotate(calc(var(--r)*-1))}to{transform:rotate(var(--r))}}
+header{text-align:center;padding:56px 20px 18px;max-width:760px;margin:auto}
+h1{font:800 clamp(2.2rem,7vw,4rem)/1.05 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em}
+h1 span{display:inline-block;animation:rise .8s cubic-bezier(.2,.9,.3,1) both}
+h1 span:nth-child(2){animation-delay:.15s;color:var(--gold)}h1 span:nth-child(3){animation-delay:.3s;color:var(--mint)}
+@keyframes rise{from{opacity:0;transform:translateY(30px) rotate(-3deg)}to{opacity:1;transform:none}}
+header p{color:var(--mut);margin-top:14px}
+.tools{display:flex;gap:10px;justify-content:center;align-items:center;margin-top:18px;flex-wrap:wrap;font-size:.9rem;color:var(--mut)}
+.tools input{background:#ffffff14;border:1px solid #ffffff33;color:var(--ink);border-radius:10px;padding:8px 12px;font:inherit;width:150px}
+.tools input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
+main{max-width:860px;margin:0 auto;padding:10px 16px 60px}
+.bar{height:6px;background:#ffffff1c;border-radius:9px;overflow:hidden;margin:10px 0 16px}
+.bar i{display:block;height:100%;width:5%;background:linear-gradient(90deg,var(--gold),var(--mint));border-radius:9px;transition:width .5s}
+.days{display:grid;grid-template-columns:repeat(10,1fr);gap:8px}
+.day{all:unset;box-sizing:border-box;cursor:pointer;text-align:center;padding:10px 0 8px;border-radius:12px;background:#ffffff12;border:1px solid #ffffff22;font-weight:700;line-height:1.1;transition:transform .2s,background .2s;position:relative}
+.day small{display:block;font-weight:400;font-size:.65rem;color:var(--mut)}
+.day:hover{transform:translateY(-4px);background:#ffffff26}
+.day.seen::after{content:"";position:absolute;top:5px;right:5px;width:6px;height:6px;border-radius:50%;background:var(--mint)}
+.day.on{background:var(--gold);color:var(--cardink);transform:translateY(-4px) scale(1.06);box-shadow:0 8px 24px #ffc93c55}
+.day.on small{color:#4a3b00}
+.wrap{perspective:1200px;margin-top:26px}
+.mail{background:var(--card);color:var(--cardink);border-radius:20px;padding:28px clamp(18px,4vw,36px);box-shadow:0 30px 60px #0008;transform-origin:50% 0;animation:open .6s cubic-bezier(.2,.8,.2,1)}
+@keyframes open{from{opacity:0;transform:rotateX(-70deg) translateY(-14px)}to{opacity:1;transform:none}}
+.tag{display:inline-block;font-size:.8rem;font-weight:700;padding:3px 12px;border-radius:99px;background:#e9e4ff;color:#3b2fa0}
+.tag.main{background:#ffe9a8;color:#6b4a00}.tag.junior{background:#c9f7e8;color:#07634c}.tag.out{background:#ffd9e2;color:#8a1d3a}.tag.edu{background:#d8ecff;color:#124a85}
+.meta{border:1px solid #e3def7;border-radius:12px;overflow:hidden;margin:14px 0;font-size:.92rem}
+.row{display:flex;gap:10px;align-items:center;padding:9px 14px;border-bottom:1px solid #eee9fb;flex-wrap:wrap}
+.row:last-child{border:0}.row b{width:64px;color:#6d6896;font-weight:500;flex:none}
+.row span{flex:1;min-width:160px}.row.subj span{font-weight:700;font-size:1.05rem}
+.btn{all:unset;cursor:pointer;background:var(--cardink);color:#fff;font-weight:700;font-size:.82rem;padding:7px 14px;border-radius:9px;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}.btn.big{font-size:.95rem;padding:11px 20px;background:#0c7a5c}.btn.ok{background:#0c8a68!important}
+.steps{background:#f2efff;border-radius:12px;padding:10px 14px;font-size:.88rem;margin-bottom:14px}
+.body{border:1px solid #e3def7;border-radius:12px;padding:20px;background:#fff;font:15px/1.6 Arial,Helvetica,sans-serif;color:#222;margin-bottom:14px}
+.body p{margin:0 0 12px}.body ul,.body ol{margin:0 0 12px;padding-left:22px}.body li{margin:3px 0}.body a{color:#1a56db}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:20px}
+.nav button{all:unset;cursor:pointer;background:#ffffff16;border:1px solid #ffffff33;padding:10px 18px;border-radius:12px;font-weight:700;transition:background .2s}
+.nav button:hover{background:#ffffff30}.nav button:disabled{opacity:.3;cursor:default}
+@media(max-width:640px){.days{grid-template-columns:repeat(5,1fr)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="stage" aria-hidden="true"><div class="beam a"></div><div class="beam b"></div></div>
+<header>
+  <h1><span>20 days.</span> <span>20 emails.</span> <span>One stage.</span></h1>
+  <p>GITAM Innovation Challenge 2026 · Tap a day to get that email, ready to copy and paste.</p>
+  <div class="tools">
+    <label>Deadline <input id="dl" placeholder="e.g. 10 Oct" aria-label="Deadline"></label>
+    <label>Your name <input id="yn" placeholder="Your Name" aria-label="Your name"></label>
+  </div>
+</header>
+<main>
+  <div class="bar"><i id="bar"></i></div>
+  <div class="days" id="days" role="tablist" aria-label="Email days"></div>
+  <div class="wrap"><article class="mail" id="mail" aria-live="polite"></article></div>
+  <div class="nav"><button id="prev">← Previous day</button><button id="next">Next day →</button></div>
+</main>
+<script>
+const FEE="Entry: ₹125 per person (Junior) or ₹175 per person (Main), for a team of four.";
+const R="https://gevents.gitam.edu/registration/ODkyMg==", D="https://gic.gitam.edu";
+// [audience, subject, preview, lines, ps, hideFee]
+const E=[
+["Everyone","Someone will win ₹2,00,000 on 11 December. Why not your team?","A national stage, a 60-second video, and ₹175 per person.",
+["Students across India are recording a 60-second video about an idea they believe in.","The best ideas pitch live to a jury and investors at the Grand Finale in Hyderabad on 11 December.","- Main Track winner: ₹2,00,000 + 6 months free incubation","- Junior Track winner: ₹50,000","You submit a 1-minute video and a pitch deck. No company or prototype needed."],"Every registered team member gets a participation certificate, win or not."],
+["Everyone","What does ₹175 actually buy you?","Let's itemise it.",
+["Here is what you get:","- A place in a national student pitching competition (6th edition)","- A jury review of your idea and video","- Top 100: online bootcamps with mentors","- Top 40: a personal venture coach","- A certificate for every team member","Prizes: ₹2,00,000 (Main) and ₹50,000 (Junior), plus incubation support.","That's less than a café lunch for a shot at a national stage."]],
+["Everyone","Your idea in 60 seconds (here's the formula)","Four sentences. That's all your video needs.",
+["The 1-minute video scares people most. Use four sentences:","# Here's a problem: … (who is hurting, and how)","# Our idea is … (one plain sentence)","# It's different because … (why current options fall short)","# Next, we will … (your first real step)","Record on your phone. Good light, steady hand, honest voice. Clear thinking beats fancy editing."]],
+["Everyone","\"I don't have a prototype yet.\"","Good. You're allowed to apply anyway.",
+["Junior Track: a concept or early idea is enough.","Main Track: an idea, prototype or MVP works.","You don't need a registered company, pitching experience, or a technical idea.","You need a real problem, a believable solution and a team of 2 to 4.","If you're shortlisted, mentors in the bootcamp help with the rest."]],
+["Main Track","₹2,00,000 cash + ₹3,00,000 of incubation: the winner's package","And a nomination most student founders never get.",
+["The Main Track winner gets:","- ₹2,00,000 cash prize","- 6 months free incubation at GITAM i-TBI (worth ₹3,00,000)","- Direct nomination for the SIA Award 2027","- Workspace, mentors and the GITAM VDC investor and alumni network","Runner-up: ₹1,00,000. Second runner-up: ₹50,000. Plus ₹50,000 awards for Best Social Impact Idea and People's Choice.","Every finalist gets a year of 1:1 venture coaching (worth ₹2,00,000 per team)."],"","main"],
+["Junior Track","Could a Class 11 student pitch to investors in Hyderabad?","Yes. Here's how the Junior Track works.",
+["Yes, it's built for exactly that.","Junior Track is for Class 10–12 students, in teams of 2–4 from the same school.","Shortlisted teams pitch in person at the nearest GITAM campus: Hyderabad, Bengaluru or Visakhapatnam.","The top 15 teams go to the Grand Finale in Hyderabad on 11 December.","Prizes: ₹50,000, ₹30,000 and ₹20,000.","Finalists get the LEAD Program (worth about ₹2,00,000 per team). Travel, stay and food are covered for Lead and Co-Lead.","A school ID or principal's letter is needed only at shortlisting."],"","junior"],
+["Everyone","Four steps between you and the Hyderabad stage","No mystery. Here is the whole path.",
+["# Register and submit a 1-minute video and a pitch deck.","# A jury screens every entry. Top 100 join an online bootcamp (15–29 Oct).","# Top 40 get a personal venture coach. Main Track semi-finals are online on 25–26 Nov.","# Finalists pitch live at GITAM Hyderabad on 11 December.","Step 1 is the only one you have to do today."]],
+["Everyone","Even if you don't win, you leave with this","Five things nobody can take back.",
+["Most teams won't win a trophy. But every team walks away with:","- A finished 1-minute pitch video","- A real pitch deck reviewed by a jury","- Bootcamp experience with startup mentors (if shortlisted)","- A participation certificate","- A line on your resume: pitched at a national competition"]],
+["Everyone","Two minutes to register. Sixty seconds to pitch.","The effort is smaller than you think.",
+["Let's shrink this down:","- Register: fill a form and pay the team fee (₹499 Junior or ₹699 Main)","- Submit: one 60-second video and one pitch deck","- ID check: school ID or bonafide letter, only if shortlisted","No essay, no business plan, no company.","Early registrants get the full bootcamp window (15–29 Oct) to polish their pitch."],"","none"],
+["Everyone","What would you ask a venture coach?","The top 40 teams get one. Finalists keep theirs for a year.",
+["Imagine someone who has built ventures asking: Who's your customer? Why now? What if a bigger company copies you?","The top 40 teams each get a personal venture coach.","Finalists get a full year of 1:1 coaching from the GITAM VDC network (worth ₹2,00,000 per team).","It all begins with a 1-minute video."]],
+["Everyone","Your team of four, ₹175 each. Do the maths.","Who's the missing teammate?",
+["The fee is per team, not per student.","- Main Track: ₹699 ÷ 4 ≈ ₹175 each","- Junior Track: ₹499 ÷ 4 ≈ ₹125 each","A team of two pays about ₹350 or ₹250 each, so four is best value.","Mix skills: someone who codes, designs, talks to people, loves spreadsheets. Main teams can mix branches and years. Junior teams must be from one school.","Message three friends tonight."],"","none"],
+["Everyone","Five questions your pitch deck must answer","Answer these and you're ahead of most entries.",
+["Shortlisted teams refine a deck of up to 10 slides. Finalists show 10 slides (Main) or 5 (Junior).","# What problem are you solving, and for whom?","# What is your solution, in one plain sentence?","# Why is it better than what exists?","# How will it make money or create impact?","# What is your next step?","Write one honest sentence for each. That's your first draft."]],
+["Outside GITAM","Not from GITAM? This competition is still for you.","It's open to eligible students across India.",
+["Some students think this is only for GITAM students. It isn't.","Eligible school and college students across India can join. Past editions had teams from 29 states.","Early rounds are online, so you can take part from anywhere.","Main teams can mix institutions. Junior teams come from the same school.","Your city doesn't matter."]],
+["Main Track","After the trophy: six months of free incubation","This is the part that turns an idea into a company.",
+["Most competitions end when the lights go off. This one keeps going.","Main Track winners, runners-up and special award winners can get:","- Free 6-month incubation at GITAM i-TBI","- Workspace and a mentor network","- GITAM VDC investor and alumni access","- Direct SIA Award 2027 nomination","A stage plus a runway is a rare combination."]],
+["Junior Track","The Junior Track regional round is where it gets real","Pitch face to face. Nearest campus, not nearest city.",
+["New this year: in-person regional rounds on 28 November.","Shortlisted teams pitch face to face at the nearest GITAM campus: Hyderabad, Bengaluru or Visakhapatnam.","The top 15 teams move on to the Grand Finale in Hyderabad on 11 December.","Travel, stay and food are covered for the Lead and Co-Lead.","For many students, it's the first time in front of a jury. That alone is worth it."],"","junior"],
+["Everyone","\"My idea isn't technical enough.\"","It doesn't have to be.",
+["Not every great idea is an app. Both tech and non-tech ideas are welcome in five themes:","- Planet & Sustainability","- Bio Economy & Agriculture","- DeepTech & Manufacturing","- Sports & Fitness","- D2C & Consumer Brands","A food brand, a recycling model or a grassroots sports league all count.","The jury looks for a real problem, a clear solution and good thinking."]],
+["Everyone","The real cost of not trying","It's not ₹175.",
+["\"Maybe next time\" is easy. But next time, the idea may belong to someone else.","The fee is small. The real cost of not entering is never knowing: would a jury like your idea? Would a coach? Could your team stand on a stage in Hyderabad?","You may not win. But you'll have a video, a deck, a certificate and a clearer idea of what you're building."]],
+["Teachers & Mentors","A small favour that could change a student's year","A two-line forward is all it takes.",
+["You see talent before students do. Could you share the challenge with students who have an idea?","Open to Class 10–12 (Junior Track) and UG students and 2025+ graduates (Main Track).","You can forward this or paste:","\"GITAM Innovation Challenge 2026: a national student pitching competition with ₹50 lakh+ in prizes, coaching and incubation value. Register at https://gic.gitam.edu by [Deadline].\"","Thank you for backing your students."],"","none"],
+["Everyone","Registrations close [Deadline]. Your checklist.","Five things, 30 minutes.",
+["Finish these in one sitting:","[ ] Team of 2–4 confirmed (Lead + Co-Lead named)","[ ] Theme chosen","[ ] 1-minute video recorded","[ ] Pitch deck ready (a simple first version is fine)","[ ] Student or school ID on hand (for shortlisting)","Every registered member gets a participation certificate."]],
+["Everyone","Final call: will you wonder \"what if\"?","Registrations close [Deadline].",
+["This is the last email, so I'll keep it short.","If you have an idea, a team and a minute to record a video, you have everything you need.","Grand Finale: 11 December, GITAM Hyderabad. Main winner: ₹2,00,000 + 6 months incubation. Junior winner: ₹50,000."],"If you know a student who should see this, forward it today."]
+];
+const $=s=>document.querySelector(s), seen=new Set();let cur=0;
+const days=$("#days");
+E.forEach((_,i)=>{const b=document.createElement("button");b.className="day";b.setAttribute("role","tab");b.innerHTML=`${i+1}<small>Day</small>`;b.onclick=()=>show(i);days.appendChild(b)});
+const tagc=a=>/Main/.test(a)?"main":/Junior/.test(a)?"junior":/Outside/.test(a)?"out":/Teach/.test(a)?"edu":"";
+function fill(t){return t.replace(/\[Deadline\]/g,$("#dl").value.trim()||"[Deadline]")}
+function flash(btn){const o=btn.dataset.l||(btn.dataset.l=btn.textContent);btn.classList.add("ok");btn.textContent="Copied ✓";setTimeout(()=>{btn.classList.remove("ok");btn.textContent=o},1600)}
+function copyEl(id,btn){const el=document.getElementById(id),r=document.createRange(),s=getSelection();r.selectNodeContents(el);s.removeAllRanges();s.addRange(r);try{document.execCommand("copy");flash(btn)}catch(e){}s.removeAllRanges()}
+function copyTxt(t,btn){const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");flash(btn)}catch(e){}ta.remove()}
+function show(i){
+  cur=i;seen.add(i);const [a,s,p,L,ps,f]=E[i];
+  let h="",list=null,kind="";
+  const close=()=>{if(list){h+=`</${list}>`;list=null}};
+  L.forEach(l=>{
+    if(l.startsWith("- ")){if(kind!="ul"){close();h+="<ul>";list="ul";kind="ul"}h+=`<li>${l.slice(2)}</li>`}
+    else if(l.startsWith("# ")){if(kind!="ol"){close();h+="<ol>";list="ol";kind="ol"}h+=`<li>${l.slice(2)}</li>`}
+    else if(l.startsWith("[ ] ")){if(kind!="chk"){close();h+='<ul style="list-style:none;padding-left:0">';list="ul";kind="chk"}h+=`<li>☐ ${l.slice(4)}</li>`}
+    else{close();kind="";h+=`<p>${l}</p>`}
+  });close();
+  const fee=f==="main"?"Entry: ₹175 per person for a team of four.":f==="junior"?"Entry: ₹125 per person for a team of four.":f==="none"?"":FEE;
+  const name=$("#yn").value.trim()||"[Your Name]";
+  const body=`<p>Hi [Name],</p>${fill(h)}${fee?`<p><b>${fee}</b></p>`:""}<p><b>Register here:</b> <a href="${R}">${R}</a><br><b>More details:</b> <a href="${D}">${D}</a><br><b>Last date:</b> ${fill("[Deadline]")}</p>${ps?`<p><i>P.S. ${ps}</i></p>`:""}<p>Regards,<br>${name}<br>Senior Venture Team, Entrepreneurs Club (E-Club), GITAM</p>`;
+  $("#mail").innerHTML=`<span class="tag ${tagc(a)}">Day ${i+1} · For: ${a}</span>
+  <div class="meta">
+   <div class="row"><b>From</b><span>${name}, E-Club GITAM</span></div>
+   <div class="row"><b>To</b><span>Your student list</span></div>
+   <div class="row subj"><b>Subject</b><span id="sub">${fill(s)}</span><button class="btn" data-id="sub">Copy subject</button></div>
+   <div class="row"><b>Preview</b><span id="pre">${fill(p)}</span><button class="btn" data-id="pre">Copy preview</button></div>
+  </div>
+  <div class="steps"><b>How to use:</b> 1) Click “Copy subject” and paste it in your email’s Subject box. 2) Click “Copy email body” and paste it in the message area. Bullets, bold text and links stay as they are. 3) Replace [Name] with the student’s name.</div>
+  <div class="body" id="bd">${body}</div>
+  <div class="acts"><button class="btn big" data-id="bd">Copy email body</button><button class="btn" data-txt="bd">Copy as plain text</button></div>`;
+  $("#mail").querySelectorAll("[data-id]").forEach(b=>b.onclick=()=>copyEl(b.dataset.id,b));
+  $("#mail").querySelectorAll("[data-txt]").forEach(b=>b.onclick=()=>copyTxt(document.getElementById(b.dataset.txt).innerText,b));
+  [...days.children].forEach((d,j)=>{d.classList.toggle("on",j==i);d.classList.toggle("seen",seen.has(j)&&j!=i);d.setAttribute("aria-selected",j==i)});
+  $("#bar").style.width=((i+1)/20*100)+"%";
+  $("#prev").disabled=i==0;$("#next").disabled=i==19;
+}
+$("#prev").onclick=()=>show(cur-1);$("#next").onclick=()=>show(cur+1);
+["#dl","#yn"].forEach(s=>$(s).oninput=()=>show(cur));
+document.addEventListener("keydown",e=>{if(e.target.tagName=="INPUT")return;if(e.key=="ArrowRight"&&cur<19)show(cur+1);if(e.key=="ArrowLeft"&&cur>0)show(cur-1)});
+show(0);
+</script>
+</body>
+</html>
